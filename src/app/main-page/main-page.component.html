@@ -1,0 +1,31 @@
+<body>
+<div class="mainpage">
+  <div>    
+    <label>Select a city:</label>
+    <label class="loading" *ngIf="cities.length == 0">
+      Waiting...
+    </label>    
+    <select *ngIf="cities.length != 0" (change)="onChange($event.target.value)">
+      <option *ngFor="let city of cities" >  
+        {{city.Name}}     
+      </option>
+    </select>    
+  </div>
+  <div>
+    <div>
+    <label>Or write name of it:</label>
+    <input type="text" [(ngModel)]="cityName" />
+    </div>
+   <div>
+    <label>and count of days: </label>
+    <input type="text" [(ngModel)]="countOfDays" />
+    <label>and click "Weather" </label>
+    </div>
+  
+  </div> 
+  <div class="buttons">
+    <button [routerLink]="['/mainpage/weathers', cityName, countOfDays]" routerLinkActive="active">Weather</button>
+    <button [routerLink]="['/mainpage/histories']" routerLinkActive="active">History</button>
+  </div>   
+</div> 
+</body>

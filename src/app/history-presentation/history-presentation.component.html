@@ -1,0 +1,27 @@
+<h1 *ngIf="loading">Waiting...</h1>
+<div *ngIf="!loading">  
+  <button (click)="goBack()">Back</button>
+  <table>
+  <tr>
+    <th>Time</th>
+    <th>City</th>
+    <th>Day</th>
+    <th>Weather</th>
+    <th>Day temperature</th>
+    <th>Night temperature</th>
+  </tr>  
+  <tr *ngFor="let history of histories">
+    <td>{{history.Time}}</td>
+    <td>{{history.City.Name}}</td>
+    <td>{{history.City.Weathers[0].Day}}</td>
+    <td>
+      <img src="/assets/icons/{{history.City.Weathers[0].IconId}}"/>
+      <br/>
+      {{history.City.Weathers[0].MainWeather}}
+    </td>    
+    <td class="day-temp">{{history.City.Weathers[0].DayAvgTemp}} °C</td>
+    <td class="night-temp">{{history.City.Weathers[0].DayMinTemp}} °C</td>
+  </tr>  
+  </table>
+<button (click)="goBack()">Back</button>
+</div>

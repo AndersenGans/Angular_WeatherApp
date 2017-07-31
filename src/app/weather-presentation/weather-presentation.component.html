@@ -1,0 +1,35 @@
+<body>
+  <h1 *ngIf="loading">Waiting...</h1>
+<div *ngIf="!loading">   
+  <button (click)="goBack()">Back</button>
+  <br/> 
+  <label>{{weathers[0].City}}</label>    
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Weather</th>
+        <th>Day temperature</th>
+        <th>Night temperature</th>
+        <th>Humidity</th>
+        <th>Wind speed</th>
+        <th>Cloudiness</th>
+        <th>Pressure</th>        
+      </tr>
+      <tr *ngFor="let weather of weathers" class="weathers">
+        <td>{{weather.Day | date:'fullDate'}}</td>
+        <td>
+          <img src="/assets/icons/{{weather.IconId}}"/>
+          <br/>
+          {{weather.MainWeather}}
+        </td>
+        <td class="day-temp"> {{weather.DayAvgTemp}} °C</td>
+        <td class="night-temp">{{weather.DayMinTemp}} °C</td>
+        <td>{{weather.Humidity}}%</td>
+        <td>{{weather.WindSpeed}} m/s</td>
+        <td>{{weather.Cloudiness}}%</td>
+        <td>{{weather.Pressure}} hpa</td>
+      </tr>
+    </table>    
+  <button (click)="goBack()">Back</button>
+</div>
+</body>
